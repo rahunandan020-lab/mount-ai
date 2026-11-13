@@ -1,1 +1,80 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOUNT AI</title>
+<style>
+body {
+  background: #090d20;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  padding: 30px 15px;
+}
+h1 { color: #9d8cff; font-size: 40px; }
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#813cff,#00cfff);
+  margin: 35px auto;
+  display: grid;
+  place-items: center;
+  font-size: 65px;
+  box-shadow: 0 0 35px #7655ff;
+}
+button {
+  background: #7957ff;
+  color: white;
+  border: 0;
+  padding: 16px 25px;
+  border-radius: 30px;
+  font-size: 17px;
+  margin: 10px;
+}
+#answer { margin-top: 25px; font-size: 18px; }
+</style>
+</head>
+<body>
+<h1>MOUNT AI</h1>
+<p>Your Personal Voice Assistant</p>
+<div class="circle">🤖</div>
+<button onclick="listen()">🎙️ Bolo MOUNT</button>
+<button onclick="speak('Namaste! Main MOUNT hoon. Kaise ho?')">🔊 Baat karo</button>
+<p id="answer">Namaste! Main MOUNT hoon.</p>
+
+<script>
+function speak(message) {
+  const speech = new SpeechSynthesisUtterance(message);
+  speech.lang = "hi-IN";
+  speech.rate = 0.9;
+  speech.pitch = 1.2;
+  speechSynthesis.speak(speech);
+  document.getElementById("answer").innerText = message;
+}
+
+function listen() {
+  const Recognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  if (!Recognition) {
+    alert("Chrome browser mein try karo.");
+    return;
+  }
+
+  const recognition = new Recognition();
+  recognition.lang = "hi-IN";
+  recognition.onresult = function(event) {
+    const words = event.results[0][0].transcript;
+    document.getElementById("answer").innerText = words;
+    speak("Tumne kaha " + words);
+  };
+  recognition.start();
+}
+</script>
+</body>
+</html>
+
