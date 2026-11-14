@@ -61,21 +61,4 @@ function listen() {
 
   const recognition = new Recognition();
   recognition.lang = "hi-IN";
-  recognition.onresult = function(event) {
-    const words = event.results[0][0].transcript;
-    document.getElementById("answer").innerText = words;
-    speak("Tumne kaha " + words);
-  };
-  recognition.start();
-}
-</script>
-  if(q.includes("मेरा नाम") || q.includes("मेरा नाम क्या है") || q.includes("main kaun hoon") || q.includes("मेरा नाम बताओ")) {
-  return "तुम्हारा नाम रघुनंदन है। मैं तुम्हें पहचानती हूँ।";
-}
-
-if(q.includes("तुम्हारा नाम") || q.includes("तुम कौन हो")) {
-  return "मेरा नाम MOUNT है। मैं तुम्हारी दोस्त हूँ।";
-}
-</body>
-</html>
-
+  
