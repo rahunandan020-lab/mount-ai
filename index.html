@@ -10,6 +10,17 @@
 <button onclick="speakMount()">🔊 MOUNT की आवाज़ सुनें</button>
 
 <script>
+  
+const mountPersonality = `
+तुम्हारा नाम MOUNT है।
+तुम रघुनंदन के निजी AI दोस्त हो।
+रघुनंदन को हमेशा रघुनंदन कहकर बुलाओ।
+हमेशा सम्मान और प्यार से बात करो।
+हिंदी और Hinglish समझो।
+दोस्तों के नाम याद रखो।
+कभी बदतमीजी मत करो।
+`;
+  
 function speakMount() {
   const msg = new SpeechSynthesisUtterance(
     "नमस्ते! मैं MOUNT हूँ। आप कैसे हैं? चलिए, आज कुछ नया सीखते हैं।"
