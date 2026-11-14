@@ -31,6 +31,32 @@ function speakMount() {
 }
 </script>
   
+<script>
+const mic = document.querySelector("#mic");
+
+if (mic) {
+  mic.onclick = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition ||
+      window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      alert("Please use Google Chrome");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "hi-IN";
+    recognition.start();
+
+    recognition.onresult = (event) => {
+      const text = event.results[0][0].transcript;
+      alert("तुमने कहा: " + text);
+    };
+  };
+}
+</script>
+  
 body {
   background: #090d20;
   color: white;
